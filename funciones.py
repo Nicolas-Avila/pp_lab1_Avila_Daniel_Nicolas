@@ -5,10 +5,16 @@ with open('/home/oem/progrmacion-I/parcial/equipo,json','r') as data:
     datos =json.load(data)
     jugadores = datos['jugadores']
 
-def mostrar(imprimir):
+def mostrar(imprimir)->None:
+    '''
+    la funcion muestra en consola lo que se le pase
+    '''
     print(imprimir)
 
 def lista_vacia():
+    '''
+    averigua si la lista esta vacia
+    '''
     if len(jugadores) == 0:
         mostrar("Lista esta vacía no puedo realizar ninguna operacion.")
         exit()#para terminar la ejecucion del programa
@@ -52,7 +58,7 @@ def un_jugador(ingreso:int)-> None:
     else:
         mostrar('ese jugador no existe')
 
-#4 
+#3 
 def logros(nombre:int)->None:
     '''
     recive un entero
@@ -70,7 +76,7 @@ def logros(nombre:int)->None:
         nombre = input('ingrese un jugador a buscar: ').capitalize()
         logros(nombre)
 
-
+#5
 def salon_fama(nombre:str)->None:
     '''
     recive un string
@@ -86,7 +92,7 @@ def salon_fama(nombre:str)->None:
                 elif encontrado==False:
                     mostrar('{0} no pertenece al salon de la fama'.format(jugador['nombre']))
 
-#7#8#9#13#14
+#6,7,8,12,13,18
 def estadistica_mayor(key:str)->None:
     '''
     recive un string
@@ -102,7 +108,7 @@ def estadistica_mayor(key:str)->None:
     key = key.replace('_',' ')
     mostrar('la mayor cantidad de {0} la tiene el jugador {2} con {1} {0}'.format(key,maximo,jugador))
 
-#10#11#12#15
+#9,10,11,14,17
 def jugador_rendimiento(key:str,ingreso:int)->None:
     '''
     recibe un string y un int 
@@ -120,7 +126,7 @@ def jugador_rendimiento(key:str,ingreso:int)->None:
     for nombre in jugador:
         print(nombre, end=' ')
 
-#16
+#15
 def puntos_totales()->None:
     '''
     calcula el promedio de los puntos por partidos sacando al peor jugador
@@ -143,8 +149,11 @@ def puntos_totales()->None:
     print(cont)
     mostrar('la cantidad de puntos por partido sacando al peor jugador es de {0}'.format(porcentaje))
 
-#17
+#16
 def mayor_logros()->None:
+    '''
+    averigua que jugador tiene mas logros 
+    '''
     mas_logros = 0
     for indice in jugadores:
         logros=len(indice['logros'])
