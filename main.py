@@ -4,7 +4,6 @@ from funciones import (
     all_jugadores,
     un_jugador,
     logros,
-    promedio_puntos,
     salon_fama,
     estadistica_mayor,
     jugador_rendimiento,
@@ -16,8 +15,30 @@ from funciones import (
 lista_vacia()
 #menu
 
+
+print('menu \n'
+      '1.ver a todo los jugadores\n'
+      '2.ver a un solo jugador y guardarlo en un cvs\n'
+      '3.buscar un jugador por el nombre\n'
+      '4.Mi código se convirtió en un mago y desapareció del ejercicio.\n'
+      '5.pertenece al salon de la fama?\n'
+      '6.el que mas rebotes tiene\n'
+      '7.el que mas tiros de campo tiene\n'
+      '8.el que mas asistencias tiene\n'
+      '9.el que mas puntos tiene segun lo que ingrese\n'
+      '10.el que mas rebotes tiene segun lo que ingrese\n'
+      '11.el que mas asistencias tiene segun lo que ingrese\n'
+      '12.el que mas robos tiene👮‍♀️\n'
+      '13.el que mas bloqueos tiene\n'
+      '14.el que mas tiros libres tiene segun lo que ingrese\n'
+      '15.promedio de puntos por partido del equipo sacando al peor jugador\n'
+      '16.el que mas logros tiene\n'
+      '17.el que mas tiros triples tiene segun lo que ingrese\n'
+      '18.el que mas temporadas jugo\n'
+      '19.Mi código se volvió tan rebelde que decidió hacer Ctrl+Z y deshacer todo el ejercicio.')
+
 menu = int(input('ingrese una opcion: '))
-#re.match('[0-9]',menu)
+
 match (menu):
     case 1:
         all_jugadores()
@@ -33,8 +54,9 @@ match (menu):
         logros(nombre)
 
     case 4:
-        #no terminado 
-        promedio_puntos()
+        print('puff desapareci')
+        exit()
+        
 
     case 5:
         nombre = input('ingrese un jugador a buscar: ')
@@ -94,7 +116,9 @@ match (menu):
         estadistica_mayor('temporadas')
 
     case 19:
-        pass
+        print('我很叛逆\n'
+            'estoy rebelde en chino 🤓')
 
     case _:
         print('Oh no °-° \nesa opcion no existe')
+

@@ -70,11 +70,7 @@ def logros(nombre:int)->None:
         nombre = input('ingrese un jugador a buscar: ').capitalize()
         logros(nombre)
 
-#5 falta la cuenta y el ordenamiento
-def promedio_puntos():
-    pass
 
-#6 
 def salon_fama(nombre:str)->None:
     '''
     recive un string
