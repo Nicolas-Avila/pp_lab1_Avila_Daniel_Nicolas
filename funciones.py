@@ -21,8 +21,6 @@ def lista_vacia():
     else:
         mostrar('BIENVENIDO!!')
 
-
-
 #1
 def all_jugadores()->None:
     '''
@@ -91,6 +89,7 @@ def salon_fama(nombre:str)->None:
                     mostrar('{0} si pertenece al salon de la fama'.format(jugador['nombre']))
                 elif encontrado==False:
                     mostrar('{0} no pertenece al salon de la fama'.format(jugador['nombre']))
+        #falto validar si no existe el jugador
 
 #6,7,8,12,13,18
 def estadistica_mayor(key:str)->None:
@@ -163,3 +162,36 @@ def mayor_logros()->None:
     
     mostrar('el jugador con mas logros es {0} con {1} logros'.format(jugador, mas_logros))
 
+#4 es el unto 5
+def alfabetico():
+    acumulador = 0
+    cont = 0
+    lista_nombre = []
+    for jugador in jugadores:
+        lista_nombre.append(jugador['nombre'])
+    for dato, puntos in jugador['estadisticas'].items():
+        if dato == 'promedio_puntos_por_partido':
+            acumulador = acumulador + puntos
+            cont =+ 1
+    porcentaje = acumulador / cont
+    mostrar('el porcentaje de puntos por partido es de {0}\ny el orden alfabetico es:'.format(porcentaje))
+    lista_nombre.sort()
+    for nombre in lista_nombre:
+        mostrar(nombre)
+
+#19 es el punto 20
+def orden_pisicion(key,ingreso):
+    lista_nombre = []
+    jugador = []
+    
+    for indice in jugadores:
+        for i , valor in indice['estadisticas'].items():
+            if i == key:
+                if ingreso < valor:
+                    jugador.append(indice['nombre'])
+    key = key.replace('_',' ')
+    mostrar('los jugadores que tiene mas {0} del valor ingresado ({1}) son:'.format(key,ingreso))
+    jugador.sort()
+    for nombre in jugador:
+        print(nombre, end=', ')
+    

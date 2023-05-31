@@ -9,6 +9,8 @@ from funciones import (
     jugador_rendimiento,
     puntos_totales,
     mayor_logros,
+    alfabetico,
+    orden_pisicion
     
 
     )
@@ -55,7 +57,8 @@ match (menu):
 
     case 4:
         print('puff desapareci')
-        exit()
+        # exit()
+        alfabetico()
         
 
     case 5:
@@ -118,6 +121,11 @@ match (menu):
     case 19:
         print('我很叛逆\n'
             'estoy rebelde en chino 🤓')
+        
+        valor = input('ingrese un valor: ')
+        if re.match('[0-9]',valor):
+            orden_pisicion('porcentaje_tiros_de_campo',int(valor))
+            
 
     case _:
         print('Oh no °-° \nesa opcion no existe')
