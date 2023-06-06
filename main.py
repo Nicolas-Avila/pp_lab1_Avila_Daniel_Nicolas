@@ -10,7 +10,12 @@ from funciones import (
     puntos_totales,
     mayor_logros,
     alfabetico,
-    orden_pisicion
+    orden_pisicion,
+    cantidad_posicion,
+    all_star,
+    mejores_estadisticas,
+    el_mejor
+    
     
 
     )
@@ -38,6 +43,7 @@ print('menu \n'
       '17.el que mas tiros triples tiene segun lo que ingrese\n'
       '18.el que mas temporadas jugo\n'
       '19.Mi código se volvió tan rebelde que decidió hacer Ctrl+Z y deshacer todo el ejercicio.')
+     
 
 menu = int(input('ingrese una opcion: '))
 
@@ -52,7 +58,7 @@ match (menu):
 
 
     case 3:
-        nombre = input('ingrese un jugador a buscar: ').capitalize()
+        nombre = input('ingrese un jugador a buscar a buscar por el nombre: ').capitalize()
         logros(nombre)
 
     case 4:
@@ -62,7 +68,7 @@ match (menu):
         
 
     case 5:
-        nombre = input('ingrese un jugador a buscar: ')
+        nombre = input('ingrese un jugador a buscar por el nombre: ')
         salon_fama(nombre.capitalize())
 
     case 6:
@@ -75,17 +81,17 @@ match (menu):
         estadistica_mayor('asistencias_totales')
 
     case 9:
-        valor = input('ingrese un valor: ')
+        valor = input('ingrese un valor numerico: ')
         if re.match('[0-9]',valor):
             jugador_rendimiento('promedio_puntos_por_partido',int(valor))
 
     case 10:
-        valor = input('ingrese un valor: ')
+        valor = input('ingrese un valor numerico: ')
         if re.match('[0-9]',valor):
             jugador_rendimiento('promedio_rebotes_por_partido',int(valor))
         
     case 11:
-        valor = input('ingrese un valor: ')
+        valor = input('ingrese un valor numerico: ')
         if re.match('[0-9]',valor):
             jugador_rendimiento('promedio_asistencias_por_partido',int(valor))
     
@@ -96,7 +102,7 @@ match (menu):
         estadistica_mayor('bloqueos_totale')
 
     case 14:
-        valor = input('ingrese un valor: ')
+        valor = input('ingrese un valor numerico: ')
         if re.match('[0-9]',valor):
             jugador_rendimiento('porcentaje_tiros_libres',int(valor))
         else:
@@ -109,7 +115,7 @@ match (menu):
         mayor_logros()
 
     case 17:
-        valor = input('ingrese un valor: ')
+        valor = input('ingrese un valor numerico: ')
         if re.match('[0-9]',valor):
             jugador_rendimiento('porcentaje_tiros_triples',int(valor))
         else:
@@ -122,10 +128,21 @@ match (menu):
         print('我很叛逆\n'
             'estoy rebelde en chino 🤓')
         
-        valor = input('ingrese un valor: ')
+        valor = input('ingrese un valor numerico: ')
         if re.match('[0-9]',valor):
             orden_pisicion('porcentaje_tiros_de_campo',int(valor))
             
+    case 21:
+        cantidad_posicion()
+
+    case 22:
+        all_star()
+
+    case 23:
+        mejores_estadisticas()
+    
+    case 24:
+        el_mejor()
 
     case _:
         print('Oh no °-° \nesa opcion no existe')
