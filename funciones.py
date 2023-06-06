@@ -7,13 +7,13 @@ with open('/home/oem/progrmacion-I/parcial/equipo,json','r') as data:
 
 def mostrar(imprimir)->None:
     '''
-    la funcion muestra en consola lo que se le pase
+    la funcion muestra en consola lo que se le pase.
     '''
     print(imprimir)
 
-def lista_vacia():
+def lista_vacia()->None:
     '''
-    averigua si la lista esta vacia
+    Averigua si la lista esta vacia.
     '''
     if len(jugadores) == 0:
         mostrar("Lista esta vacía no puedo realizar ninguna operacion.")
@@ -24,7 +24,7 @@ def lista_vacia():
 #1
 def all_jugadores()->None:
     '''
-    la funcion recoree todo el json y muestra los nombres y la posicion de los jugadores
+    la funcion recoree todo el json y muestra los nombres y la posicion de los jugadores.
     '''
     for indice in jugadores:
         mostrar('{0}: {1}'.format(indice['nombre'],indice['posicion']))
@@ -32,16 +32,14 @@ def all_jugadores()->None:
 #2
 def un_jugador(ingreso:int)-> None:    
     '''
-    Recive un entero 
-    La funcion muestra nombre posicion y estadisticas de la posicion ingresada
-    guarda el archivo en un csv
+    Recive un entero. 
+    La funcion muestra nombre posicion y estadisticas de la posicion ingresada.
+    guarda el archivo en un csv.
     '''
     estadistica=[]
     datos = []
     if (ingreso <= len(jugadores)):
         mostrar('{0}\n{1}\n'.format(jugadores[ingreso]['nombre'],jugadores[ingreso]['posicion']))
-        datos.append(jugadores[ingreso]['nombre'])
-        estadistica.append(jugadores[ingreso]['posicion'])
         for indice, valor in jugadores[ingreso]['estadisticas'].items():
             mostrar('{0}: {1}'.format(indice, valor))
             estadistica.append(indice)
@@ -59,8 +57,8 @@ def un_jugador(ingreso:int)-> None:
 #3 
 def logros(nombre:int)->None:
     '''
-    recive un entero
-    la funcion funciona como un buscador y muestra los logros de los jugadores buscados 
+    Recive un entero.
+    Funciona como un buscador y muestra los logros de los jugadores buscados. 
     '''
     encontrado = False 
     for jugador in jugadores:
@@ -77,8 +75,8 @@ def logros(nombre:int)->None:
 #5
 def salon_fama(nombre:str)->None:
     '''
-    recive un string
-    averigua si el jugador pertenece al salon de la fama
+    Recive un string.
+    Averigua si el jugador pertenece al salon de la fama.
     '''
     encontrado = False
     salon = 'Miembro del Salon de la Fama del Baloncesto'
@@ -90,13 +88,13 @@ def salon_fama(nombre:str)->None:
                 elif encontrado==False:
                     mostrar('{0} no pertenece al salon de la fama'.format(jugador['nombre']))
 
-        #falto validar si no existe el jugador
 
 #6,7,8,12,13,18
 def estadistica_mayor(key:str)->None:
     '''
-    recive un string
-    averigua cual es valor maximo de la key
+    Recive un string.
+    Averigua cual es valor maximo de la key ingresada.
+    Retorna un mensaje.
     '''
     maximo=0
     for indice in jugadores:
@@ -111,8 +109,8 @@ def estadistica_mayor(key:str)->None:
 #9,10,11,14,17
 def jugador_rendimiento(key:str,ingreso:int)->None:
     '''
-    recibe un string y un int 
-    averigua los jugadores con mayor valor ingresado 
+    Recibe un string y un entero. 
+    Averigua los jugadores con el valor mayor que se ingreso. 
     '''
     jugador = []
     
@@ -131,7 +129,7 @@ def jugador_rendimiento(key:str,ingreso:int)->None:
 #15
 def puntos_totales()->None:
     '''
-    calcula el promedio de los puntos por partidos sacando al peor jugador
+    Calcula el promedio de los puntos por partidos sacando al jugador con menos puntos.
     '''
     minimo = 0
     acumulador = 0
@@ -142,7 +140,6 @@ def puntos_totales()->None:
                 acumulador= acumulador + valor
                 cont += 1
                 if minimo == 0 or minimo > valor:
-                    
                     minimo = valor
     acumulador_total = acumulador - minimo
     porcentaje = acumulador_total / cont
@@ -152,7 +149,7 @@ def puntos_totales()->None:
 #16
 def mayor_logros()->None:
     '''
-    averigua que jugador tiene mas logros 
+    Averigua que jugador tiene mas logros. 
     '''
     mas_logros = 0
     for indice in jugadores:
@@ -164,27 +161,33 @@ def mayor_logros()->None:
     mostrar('el jugador con mas logros es {0} con {1} logros'.format(jugador, mas_logros))
 
 #4 es el unto 5
-def alfabetico():
+def alfabetico()->None:
+    '''
+    Muestra el porcentaje de puntos por partido y ordena los jugadores de forma alfabeticamente.
+    '''
     acumulador = 0
     cont = 0
     lista_nombre = []
     for jugador in jugadores:
         lista_nombre.append(jugador['nombre'])
-    for dato, puntos in jugador['estadisticas'].items():
-        if dato == 'promedio_puntos_por_partido':
-            acumulador = acumulador + puntos
-            cont =+ 1
+        for dato, puntos in jugador['estadisticas'].items():
+            if dato == 'promedio_puntos_por_partido':
+                acumulador = acumulador + puntos
+                cont =+ 1
     porcentaje = acumulador / cont
+    porcentaje = round(porcentaje, 2)
     mostrar('el porcentaje de puntos por partido es de {0}\ny el orden alfabetico es:'.format(porcentaje))
     ordenar_lista(lista_nombre)
     for nombre in lista_nombre:
         mostrar(nombre)
 
 #19 es el punto 20
-def orden_pisicion(key,ingreso):
-    lista_nombre = []
+def orden_pisicion(key,ingreso)->None:
+    '''
+    Averigua el mayor del numero ingresado y ordenas los nombres alfabeticamente.
+    '''
     jugador = []
-    
+
     for indice in jugadores:
         for i , valor in indice['estadisticas'].items():
             if i == key:
@@ -193,11 +196,17 @@ def orden_pisicion(key,ingreso):
     key = key.replace('_',' ')
     mostrar('los jugadores que tiene mas {0} del valor ingresado ({1}) son:'.format(key,ingreso))
     ordenar_lista(jugador)
+    
     for nombre in jugador:
-        print(nombre, end=', ')
+        print(nombre, end='\n')
 
 
-def ordenar_lista(lista:list):
+def ordenar_lista(lista:list)->list:
+    '''
+    Recibe por paramtro una lista.
+    La ordena alfabeticamente / numericamente de forma ascendente.
+    Retorna la lista ordenada. 
+    '''
     for i in range(len(lista)):
         min_index = i
         for j in range(i + 1, len(lista)):
@@ -207,9 +216,11 @@ def ordenar_lista(lista:list):
     return lista
 
 #extra 1
-def cantidad_posicion():
+def cantidad_posicion()->None:
+    '''
+    Recorre la las posiciones y cuenta la cantidad de posisiones iguales y lo guarda en un diccionario.
+    '''
     dic = {}
-    cont = 0
     for jugador in jugadores:
         if jugador['posicion'] in dic:
             dic[jugador['posicion']] += 1
@@ -219,7 +230,10 @@ def cantidad_posicion():
         mostrar('posicion {0} cantidad {1}'.format(posicion,valor))
 
 #extra 2
-def all_star():
+def all_star()->None:
+    '''
+    Ordena y mustra la cantidad de veces que consiguieron el All-Star.
+    '''
     orden = []
     for jugador in jugadores:
         all_star = {}
@@ -231,27 +245,27 @@ def all_star():
                 veces = int(veces[0])
                 all_star['veces'] =  veces
                 orden.append(all_star)
+                #?toma como entrada un elemento de la lista y devuelve el valor asociado a la clave 'veces' de ese diccionario
+                #?lambda crea una funcion anonima
                 ordenado = sorted(orden, key=lambda x: x['veces'], reverse=True)
     for star in ordenado:
         print('{0} {1} veces all star'.format(star['nombre'],star['veces']))
 
-
-
-
-
-
-
-
 #extra 3
-def mejores_estadisticas():
+def mejores_estadisticas()->None:
+    '''
+    Averigua quien tiene las mejores estadisticas usando la funcion estadistica_mayor.
+    '''
     for indice in jugadores:
         for dato, puntos in indice['estadisticas'].items():
-            
             estadistica_mayor(dato)
         break
 
 #extra 4
-def el_mejor():
+def el_mejor()->None:
+    '''
+    Averigua que jugador tiene las mejores estadisticas.
+    '''
     jugador_max=None
     max_puntaje=0
     
@@ -263,3 +277,4 @@ def el_mejor():
         if jugador_max is None or estadistica_total < max_puntaje:
             jugador_max=jugador
     print("el jugador que tiene mejores estadisticas es: {0}".format(jugador_max["nombre"]))
+

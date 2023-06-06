@@ -27,7 +27,7 @@ print('menu \n'
       '1.ver a todo los jugadores\n'
       '2.ver a un solo jugador y guardarlo en un cvs\n'
       '3.buscar un jugador por el nombre\n'
-      '4.Mi código se convirtió en un mago y desapareció del ejercicio.\n'
+      '4.promedio de puntos por partido de todo el equipo del Dream Team, ordenado por nombre de manera ascendente.\n'
       '5.pertenece al salon de la fama?\n'
       '6.el que mas rebotes tiene\n'
       '7.el que mas tiros de campo tiene\n'
@@ -42,7 +42,7 @@ print('menu \n'
       '16.el que mas logros tiene\n'
       '17.el que mas tiros triples tiene segun lo que ingrese\n'
       '18.el que mas temporadas jugo\n'
-      '19.Mi código se volvió tan rebelde que decidió hacer Ctrl+Z y deshacer todo el ejercicio.')
+      '19.Calcular y mostrar el jugador con la mayor cantidad de temporadas jugadas.')
      
 
 menu = int(input('ingrese una opcion: '))
@@ -62,8 +62,6 @@ match (menu):
         logros(nombre)
 
     case 4:
-        print('puff desapareci')
-        # exit()
         alfabetico()
         
 
@@ -125,13 +123,10 @@ match (menu):
         estadistica_mayor('temporadas')
 
     case 19:
-        print('我很叛逆\n'
-            'estoy rebelde en chino 🤓')
-        
         valor = input('ingrese un valor numerico: ')
         if re.match('[0-9]',valor):
             orden_pisicion('porcentaje_tiros_de_campo',int(valor))
-            
+
     case 21:
         cantidad_posicion()
 
